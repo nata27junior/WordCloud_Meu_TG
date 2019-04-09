@@ -1,0 +1,2272 @@
+FACULDADE DE TECNOLOGIA DE SÃO JOSÉ DOS CAMPOS FATEC PROFESSOR JESSEN VIDAL
+
+
+
+
+
+Natanael Veriano Alves Junior
+
+
+
+
+
+
+APLICAÇÃO DE DATA MINING PARA MONITORAMENTO DE POSSÍVEIS DESPERDÍCIOS DE ÁGUA EM RESIDÊNCIAS E 
+EMPRESAS.
+
+
+
+
+São José dos Campos 2019
+
+Natanael Veriano Alves Junior
+
+
+
+
+
+APLICAÇÃO DE DATA MINING PARA MONITORAMENTO DE POSSÍVEIS DESPERDÍCIOS DE ÁGUA EM RESIDÊNCIAS E 
+EMPRESAS.
+
+
+Trabalho de Graduação apresentado à Facul- dade  de  Tecnologia  São  José  dos  Campos, como parte 
+dos requisitos necessários para a obtenção do título de Tecnólogo em Análise e Desenvolvimento de 
+Sistemas..
+
+
+
+FACULDADE DE TECNOLOGIA DE SÃO JOSÉ DOS CAMPOS FATEC PROFESSOR JESSEN VIDAL
+
+
+
+Orientador: Me. Eng. Gerson Da Penha Neto
+
+
+São José dos Campos 2019
+
+Dados  Internacionais  de  Catalogação-na-Publicação  (CIP) Divisão  de  Informação  e  
+Documentação
+ALVES JUNIOR, Natanael Veriano
+APLICAÇÃO DE DATA MINING PARA MONITORAMENTO DE POSSÍVEIS DESPER- DÍCIOS DE ÁGUA EM RESIDÊNCIAS E 
+EMPRESAS.
+São José dos Campos, 2019 49f.
+
+Trabalho   de   Graduação   –   Curso   de   Tecnologia   em   Análise   e   Desenvolvimento   de 
+Sistemas.
+FATEC de São José dos Campos: Professor Jessen Vidal, 2019 Orientador: Me. Eng. Gerson Da Penha 
+Neto
+1.  Data  Mining.  2.  Distância  Euclidiana.  3.  Python.  Áreas  de  Conhecimento.  I.  Fa- 
+culdade  de  Tecnologia.  FATEC  de  São  José  dos  Campos:  Professor  Jessen  Vidal.  Divisão de 
+ Informação  e  Documentação.  II.  APLICAÇÃO  DE  DATA  MINING  PARA  MONI- TORAMENTO  DE  
+POSSÍVEIS  DESPERDÍCIOS  DE  ÁGUA  EM  RESIDÊNCIAS  E EMPRESAS.
+
+III
+
+
+
+
+
+
+REFERÊNCIA  BIBLIGRÁFICA  —
+ALVES   JUNIOR,   Natanael   Veriano.   APLICAÇÃO   DE   DATA   MINING   PARA   MO- NITORAMENTO  DE 
+ POSSÍVEIS  DESPERDÍCIOS  DE  ÁGUA  EM  RESIDÊNCIAS  E
+EMPRESAS.2019. 49f. Trabalho de Graduação – FATEC de São José dos Campos: Professor Jessen Vidal.
+
+
+
+
+
+CESSÃO  DE  DIREITOS  —
+NOME DO AUTOR: Natanael Veriano Alves Junior
+TÍTULO DO TRABALHO: APLICAÇÃO DE DATA MINING PARA MONITORAMENTO DE POSSÍVEIS DESPERDÍCIOS DE ÁGUA 
+EM RESIDÊNCIAS E EMPRESAS.
+TIPO DO TRABALHO/ANO: Trabalho de Graduação/2019
+
+
+
+
+É  concedida  à  FATEC  de  São  José  dos  Campos:  Professor  Jessen  Vidal  permissão  para 
+reproduzir cópias deste Trabalho e para emprestar ou vender cópias somente para propósitos 
+acadêmicos e científicos. O autor reserva outros direitos de publicação e nenhuma parte deste 
+Trabalho pode ser reproduzida sem a autorização do autor.
+
+
+
+
+
+
+
+
+
+V
+
+Natanael Veriano Alves Junior
+
+
+
+APLICAÇÃO DE DATA MINING PARA MONITORAMENTO DE POSSÍVEIS DESPERDÍCIOS DE ÁGUA EM RESIDÊNCIAS E 
+EMPRESAS.
+
+Trabalho de Graduação apresentado à Facul- dade  de  Tecnologia  São  José  dos  Campos, como parte 
+dos requisitos necessários para a obtenção do título de Tecnólogo em Análise e Desenvolvimento de 
+Sistemas..
+
+
+Composição da Banca
+
+
+
+
+
+Gerson Da Penha Neto, Mestre – FATEC – SJC.
+Orientador
+
+
+
+
+Diogo Branquinho Ramos, Mestre, TECSUS – FATEC – SJC.
+Membro da Banca
+
+
+
+
+Emanuel Mineda Carneiro, Mestre, FATEC – SJC.
+Membro da Banca
+
+
+
+São José dos Campos 2019
+
+
+
+VII
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dedico este trabalho primeiramente à Deus, socorro presente na hora da angústia,
+minha esposa, aos meus pais e a minha filha.
+
+Agradecimentos
+VIII
+
+
+
+Primeiramente agradeço a Deus que permitiu que tudo isso acontecesse. Também agradeç ao Professor 
+Me. Eng. Gerson Da Penha Neto, pela orientação , apoio e confiança.Ao Professor  Me.  Diogo  
+Branquinho  Ramos  que  proporcionou  os  dados  para  o  estudo  e também o estágio 
+supervisionado.Á Instituição Faculdade de Tecnologia de São José dos Campos (FATEC-SJC) pelo 
+ambiente amigável e criativo que proporciona, e a quantidade imensurável de conhecimento. Á minha 
+esposa Bruna e minha filha Lanna pelo amor, pela compreensão, pelo auxílio, pelo companheirismo. 
+Aos meus pais pelo amor, incentivo e apoio incondicional.
+Minha eterna gratidão a todos aqueles que colaboraram diretamente ou indireta- mente para está 
+conquista que pode ser concretizada, e também agradeço a criação do modelo de Trabalho de Graduação 
+para a FATEC-SJC utilizando LATEX.
+
+IX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+“Até aqui nos ajudou o Senhor.”
+1 Samuel 7:12.”
+
+X
+
+Resumo
+
+O Estado de São Paulo sofreu em 2014 com problemas da crise hídrica e assim despertou-se a 
+necessidade de armazenamento e o consumo inteligente de água. A empresa TecSUS, visando à 
+sustentabilidade, desenvolve tecnologias que ajudam na economia dos recursos. Entre  seus  produtos 
+ se  destaca  TecHydro,  equipamento  que  faz  a  captação  dos  dados de  consumo  de  água.  A  
+empresa  TecSUS  com  os  dados  obtidos,  necessitava  de  uma análise para uma possível detecção 
+de vazamento e excesso no consumo de água, visando economia de água. Assim inicia-se um estudo com 
+os dados utilizando algumas técnicas de  Data  Mining,  ou  melhor,  Mineração  de  Dados,  com  
+ferramentas  e  bibliotecas  open source, com a linguagem de programação Python  e com utilização 
+do Jupyter Notebook que  é  uma  ferramenta  Web  que  auxilia  na  integração  dos  algoritmos,  
+das  bibliotecas  e facilita a visualização dos resultados. E com aplicação da fórmula matemática 
+da Distância Euclidiana, verificou que houve períodos sem consumo de água e sendo assim podendo 
+constatar de que nesses períodos não houve vazamento de água.
+
+Palavras-chave: Data Mining; Distância Euclidiana; TecHydro; Jupyter Notebook; Python.
+
+XI
+
+Abstract
+
+The State of São Paulo suffered in 2014 with problems of the water crisis and thus the need  for  
+storage  and  the  intelligent  consumption  of  water  was  awakened.  The  TecSUS company,  
+aiming  at  sustainability,  develops  technologies  that  help  in  saving  resources. Among  its  
+products  stands  out  TecHydro,  equipment  that  captures  water  consumption data.  The  company 
+ TecSUS  with  the  obtained  data,  needed  an  analysis  for  a  possible detection of leakage 
+and excess in the consumption of water, aiming at saving water. Thus, a study of the data using 
+some techniques of Data Mining, or better, Data Mining, with tools  and  open  source  libraries,  
+with  the  programming  language  Python  and  with  using the  Jupyter  Notebook  which  is  a  
+Web  tool  that  helps  in  the  integration  of  algorithms, libraries  and  facilitates  the  
+visualization  of  the  results.  And  with  the  application  of  the mathematical formula of 
+Euclidean Distance, it was verified that there were periods without water consumption and being 
+thus able to verify that in those periods there was no water leakage.
+
+
+Keywords: Data Mining; Distância Euclidiana; TecHydro; Jupyter Notebook; Python.
+
+Lista de ilustrações
+XII
+
+
+
+Figura 1   –   Volume Útil dos Reservatórios do Sistema Hidráulico Paraíba
+do Sul                                                                                              
+                   15
+Figura 2   –   TecHydro Monitoramento e Controle remoto de hidrômetros .    17 Figura 3   –   
+Abstração                                                                                           
+               18
+Figura 4   –   Etapas do processo KDD                                                               
+             20
+Figura 5   –   Distância Euclidiana                                                                 
+                     21
+Figura 6   –   Arquivo de Dados formato Excel                                                       
+       23
+Figura 7   –   Importando as Bibliotecas                                                            
+              24
+Figura 8   –   Importação do arquivo                                                                
+                 24
+Figura 9   –   Mostrando conteúdo do Data Frame                                                     
+  24
+Figura 10  –  Separação da coluna Data e Hora                                                       
+     25
+Figura 11  –  Data Frame modificado                                                                 
+               25
+Figura 12  –  Funções Describe  e  mean                                                             
+               26
+Figura 13  –  Algoritmo para plotagem dos dados                                                     
+   26
+Figura 14  –  Função para calculo das médias diárias                                                
+  27
+Figura 15  –  Exemplo de Distância Euclidiana em Python                                      28
+Figura 16  –  Exemplo  de  Distância  Euclidiana  em  Python  com  biblioteca
+Numpy                                                                                               
+                 28
+Figura 17  –  Aplicação  Distância  Euclidiana  nos  meses  de  Março  e  Abril
+de 2018                                                                                             
+                  29
+Figura 18  –  Gráfico  de  comparação  dos  meses  de  março  e  abril  de  2018
+com a Distância Euclidiana                                                                        
+30
+Figura 19  –  Aplicação da Distancia Euclidiana entre duas semanas setem-
+bro de 2017                                                                                         
+              31
+Figura 20  –  Gráfico  de  comparação  entre  duas  semanas  com  a  Distância Euclidiana           
+                                                                                              32
+Figura 21  –  Gráfico  de  comparação  entre  duas  semanas  com  a  Distância Euclidianas 
+Detalhadas                                                                                32
+Figura 22  –  Aplicação  da  Distancia  Euclidiana  entre  os  dias  09  e  16  de setembro de 2017 
+                                                                                           33
+Figura 23  –  Gráfico  de  comparação  entre  os  dias  09  e  16  de  setembro  de
+2017 com Distância Euclidiana                                                                  34
+Figura 24  –  Gráfico de comparação entre Domingos                                                 
+34
+Figura 25  –  Gráfico de comparação entre Segundas-Feiras                                     35
+Figura 26  –  Gráfico de comparação entre Terças-Feiras                                          35
+
+XIII
+Figura 27  –  Gráfico de Comparação dos dados entre Quartas-feiras                   36
+Figura 28  –  Gráfico de Comparação dos dados entre Quintas-feiras                   36
+Figura 29  –  Gráfico de Comparação dos dados entre Sextas-feiras                      37
+Figura 30  –  Gráfico de Comparação dos dados entre Sábados                              37
+Figura 31  –  Gráfico de comparação com diferença entre 03 a 09/09 e 10 a 16/09                     
+                                                                                              38
+Figura 32  –  Gráfico  detalha  a  comparação  com  diferença  entre  a  09/09  e 16/09             
+                                                                                                    
+  38
+Figura 33  –  Figuras mostrando os dias com maior consumo de água                 39
+Figura 34  –  Plotagem dos dados dos dias de maior consumo                                40
+Figura 35  –  Gráfico com médias diárias de toda amostragem                               40
+Figura 36  –  Gráfico detalhado com médias diárias                                                  
+  41
+Figura 37  –  Gráfico com médias diárias dos meses setembro e outubro com Distância Euclidiana      
+                                                                                41
+Figura 38  –  Gráfico do Total Diário de toda amostragem                                       42
+Figura 39  –  Gráfico detalhado da Total Diário                                                     
+       42
+Figura 40  –  Gráfico do Total Diário entre dois meses com Distância Eucli- diana                   
+                                                                                                43
+Figura 41  –  Gráfico Simulação de vazamento                                                        
+      43
+Figura 42  –  Simulação de vazamento                                                                
+              44
+Figura 43  –  Gráfico com a simulação de vazamento com distância euclidiana  44 Figura 44  –  
+Gráfico da média hora a hora do arquivo todo                                   45
+Figura 45  –  Gráfico  da  média  hora  a  hora  entre  Fevereiro  e  Março  e  a média do arquivo 
+todo                                                                                  45
+Figura 46  –  Gráfico  da  média  hora  a  hora  entre  Fevereiro,  Março  e  Abril
+e a média do arquivo todo                                                                          
+46
+
+Lista de tabelas
+XIV
+Tabela 1   –   Dados dos Volumes Útil dos Reservatórios do Sistema Hidráu-
+lico Paraíba do Sul                                                                                 
+       16
+
+XV
+
+Lista de abreviaturas e siglas
+
+SABESP        Companhia de Saneamento Básico do Estado de São Paulo
+ANA               Agência Nacional de Águas
+MQTT            Message Queuing Telemetry Transport
+UHE Funil     Usina Hidrelétrica Funil
+UHE Jaguari     Usina Hidrelétrica Jaguari
+UHE Paraibuna     Usina Hidrelétrica Paraibuna
+UHE Santa Branca     Usina Hidrelétrica Santa Branca
+BSD                Berkeley Software Distribution
+IDE                 Integrated Development Environment KDD               Knowledge Discovery in 
+Databases GNU               General Public License
+
+XVI
+
+Lista de símbolos
+
+D                     Distância Euclidiana
+
+Sumário
+XVII
+
+
+
+
+1                INTRODUÇÃO                                                                         
+                          15
+1.1             Motivação                                                                           
+                                 16
+1.2             Objetivos                                                                           
+                                   16
+1.2.1           Objetivo Geral                                                                      
+                                 16
+1.2.2          Objetivo Específico                                                                  
+                              16
+2                CONTEXTUALIZAÇÃO TECNOLÓGICA                                                   17
+2.1             A Empresa TecSus                                                                    
+                         17
+2.2             A Coleta dos dados                                                                  
+                         17
+2.3             Dados e Informação                                                                  
+                        18
+2.4             Data Mining  (Mineração de Dados) e KDD                                             
+  19
+2.4.1          Data Mining (Mineração de Dados)                                                     
+                19
+2.4.2          KDD (Knowledge Discovery in Databases)                                               
+           19
+2.5             Distância Euclidiana                                                                
+                          21
+2.6             Linguagem Python, e suas bibliotecas e ferramentas                                
+22
+3                DESENVOLVIMENTO DO TRABALHO                                                     23
+3.1             Coleta dos Dados                                                                    
+                           23
+3.2             Desenvolvimento do algoritmo                                                        
+               23
+3.3             Aplicando a formula da Distância Euclidiana em Python                         27
+4                RESULTADOS                                                                         
+                           29
+4.1             Resultados obtidos com Distância Euclidiana                                         
+    29
+4.2             Resultados obtidos com a Função para plotagem de gráfico                   31
+5                CONCLUSÃO                                                                          
+                           47
+5.1             Trabalhos Futuros                                                                   
+                           47
+REFERÊNCIAS                                                                                         
+          49
+
+1  Introdução
+
+O Estado de São Paulo sofreu com problemas da crise hídrica, decorrente pelo fato do consumo 
+excessivo e uso inconsciente da água dentre outros fatores. Esse problema afetou também a região do 
+Vale do Paraíba, como pode ser observado no relatório da ANA (ANA, 2018), onde o Sistema Hidráulico 
+Paraíba do Sul observou uma redução acelerada dos níveis das represas e esteve operando meses em 
+estado de alerta. Assim foi tomada atitude mais emergenciais como intensificar as manobras de 
+redução de pressão e também o bombeamento do volume morto, com águas mais sujas que ficam no fundo 
+das represas, e também pedir para população se conscientizar e racionar o consumo de água.
+Figura 1 – Volume Útil dos Reservatórios do Sistema Hidráulico Paraíba do Sul
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fonte – Adaptada pelo autor, de ANA (2018)
+
+
+O problema pode ser observado na figura 1 e na tabela 1, visualizando os níveis dos reservatórios 
+que oscilam, isso é alarmante. Visto isso, a empresa TecSUS Tecnologias para a Sustentabilidade 
+desenvolveu tecnologias que ajudam na economia dos recursos escassos do planeta e aumentam a 
+eficiência de processos e produtos. Com produto TecHydro, mo- nitoramento e controle remoto de 
+hidrômetros, podendo ser para uso doméstico, comercial e industrial. A coleta de dados de consumo 
+de água em intervalos pré-programados (entre 1  minuto  e  24  horas).  Com  os  dados  obtidos,  a 
+ empresa  analisa  o  consumo  e  gera  um relatório.
+
+15
+
+Tabela 1 – Dados  dos  Volumes  Útil  dos  Reservatórios  do  Sistema  Hidráulico Paraíba do Sul
+
+ANO 2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+UHE
+Funil 75,66%
+86,21%
+78,60%
+87,20%
+53,87%
+25,63%
+39,23%
+99,60%
+29,78%
+44,16%
+UHE
+Jaguari 97,62%
+98,95%
+103,11%
+94,18%
+78,93%
+42,06%
+27,87%
+70,25%
+67,75%
+49,42%
+UHE
+Paraibuna 86,10%
+92,26%
+92,92%
+58,84%
+63,36%
+23,27%
+63,80%
+37,77%
+71,69%
+44,84%
+UHE
+Santa Branca 82,18%
+99,45%
+99,36%
+76,72%
+70,78%
+48,92%
+13,69%
+41,53%
+24,24%
+67,43%
+Reservatório Equivalente 86,47%
+93,15%
+93,24%
+70,51%
+65,40%
+28,84%
+15,40%
+52,59%
+61,77%
+47,18%
+
+
+1.1   Motivação
+Fonte – Adaptada pelo autor, de ANA (2018)
+
+Foi escolhido esse tema para realizar um estudo no consumo de água para investi- gação de detecção 
+possível excesso e vazamento em residências e empresas, com aplicação de data mining, visando 
+economia no consumo de água.
+
+1.2   Objetivos
+As subseções a seguir apresentam os objetivos deste trabalho.
+
+1.2.1    Objetivo Geral
+Este  trabalho  de  graduação  tem  por  objetivo  desenvolver  um  estudo  para  se identificar 
+possíveis desperdícios de água em residências e empresas, com aplicação de data mining, visando 
+economia no consumo de água.
+
+1.2.2   Objetivo Específico
+Para a realização deste foram estabelecidos os objetivos específicos:
+
+•  Realizar a captação de dados no estilo xlsx;
+•  Fazer a mineração dos dados coletados;
+•  Fazer a análise dos dados coletados;
+•  Fazer a plotagem dos dados coletados em gráficos;
+
+16
+
+2  Contextualização Tecnológica
+
+2.1   A Empresa TecSus
+A Empresa TecSUS Tecnologias para a Sustentabilidade, é uma startup de tecnologia da informação que 
+atua no desenvolvimento de dispositivos, aplicativos e sistemas para transmissão e recepção de 
+dados, controle de equipamentos remotos e gestão da informação, aplicados predominantemente nos 
+setores de abastecimento de água, saneamento, geração e distribuição de eletricidade, distribuição 
+de gás natural, e serviços municipais, embora as aplicações possam ter caráter mais abrangente. As 
+tecnologias visam aprimorar o uso dos recursos naturais do planeta, contribuindo para a redução do 
+desperdício (de água, energia, gás e tempo) e tornando a gestão destes recursos mais eficiente.
+
+2.2   A Coleta dos dados
+A Empresa TecSUS coleta informações para monitoramento de consumo de água. O serviço é oferecido 
+tanto para residências como para estabelecimentos comerciais. Veja a ilustração do serviço prestado 
+na figura 2.
+Figura 2 – TecHydro Monitoramento e Controle remoto de hidrômetros
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fonte – TecSUS(2018).
+
+
+
+17
+
+Os  dados  são  coletados  diretamente  dos  hidrômetros,  por  uma  placa  eletrônica da  TecSus.  
+Esses  dados  são  transmitidos  em  uma  rede  mesh  local,  até  chegar  a  um concentrador de 
+dados que fica no cliente.
+O concentrador de dados tem acesso à internet  e enviam esses dados para a nuvem através de MQTT 
+(Message Queuing Telemetry Transport), os dados quando chegam à nuvem são processados e armazenados 
+no banco de dados.
+
+2.3   Dados e Informação
+Com é explicado em (BINAPRATICA, 2017), os dados não tem significado relevante não conduz uma 
+compreensão com exatidão, os dados podem ser com exemplo uma string ou um caractere numérico ou 
+alfabético ou simbolos e caracters especiais.
+E a informação é a ordenação e a organização dos dados de forma que transmita um significado ou uma 
+compreensão dentro de um determinado contexto. O conjunto ou consolidação dos dados de forma a 
+fundamentar o conhecimento.
+Quanto mais distanciamos dos dados maior é a abstração, como pode ser observado na figura 3
+Figura 3 – Abstração
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fonte – (BINAPRATICA, 2017)
+
+
+
+
+
+
+
+18
+
+2.4   Data Mining  (Mineração de Dados) e KDD
+2.4.1   Data Mining (Mineração de Dados)
+A mineração de dados geralmente faz parte de uma maior inteligência de negócios ou gerenciamento de 
+conhecimento iniciativa conforme é explicado em (DIG, 2004). Como os  governos  estaduais  são  
+organizações  complexas  que  coletam  e  processam  grandes quantidades de informações, a 
+mineração de dados pode ajudar a fornecer valor ao governo estadual operações e contribuintes 
+através da extração de informações úteis das montanhas de  dados.  Além  disso,  a  mineração  de  
+dados  pode  ser  preditiva  e  descobrir  padrões ocultos que pode estrategicamente usar para 
+reduzir custos, aumentar as oportunidades de expansão de negócios, e detectar fraudes, desperdícios 
+e abusos que drenam os dólares dos contribuintes.
+O objetivo da mineração de dados é identificar padrões para fazer previsões a partir de informações 
+contidas em bancos de dados. Ele permite que o usuário seja proativo na identificação e predizendo 
+tendências com essa informação. Usos comuns de mineração de dados no governo incluem descoberta de 
+conhecimento, detecção de fraudes, análise de pesquisa, suporte à decisão e personalização do site. 
+Os usos mais comuns do governo federal de mineração de dados identificados pelo GAO(U.S. General 
+Accounting Office (GAO)) incluem:
+
+•  Melhorar o serviço ou desempenho
+•  Detectar fraude, desperdício e abuso
+•  Analisar informações científicas e de pesquisa
+•  Gestão de recursos humanos
+•  Detectar atividades ou padrões criminosos
+•  Analisar inteligência e detectar atividades terroristas
+2.4.2   KDD (Knowledge Discovery in Databases)
+O  processo  capaz  de  descobrir  conhecimento  (informação)  em  banco  de  dados chama-se KDD 
+(Knowledge Discovery in Databases), este processo foi proposto em 1989 por(FAYYAD;  
+PIATETSKY-SHAPIRO;  SMYTH,  1996),  para  referir-se  as  etapas  que produzem conhecimento a 
+partir de dados. Dentro deste processo a etapa de mineração de dados é a fase que transforma dados 
+em informação.
+Definida  como  o  processo  de  descoberta  de  padrões  nos  dados  por  (FAYYAD; 
+PIATETSKY-SHAPIRO; SMYTH, 1996), com o objetivo de explicar a informação e a
+
+19
+
+realizar predições a partir da mesma. A prática de mineração de dados tem como objetivo produzir 
+informação na forma de fatos ou padrões, também chamados conhecimento ad- quirido segundo (FAYYAD; 
+PIATETSKY-SHAPIRO; SMYTH, 1996). Este conhecimento para  ser  corretamente  interpretado  e  útil,  
+deve  ser  apresentado  de  forma  a  atingir  tal propósito, apresentando assim o que foi 
+aprendido para poder realizar reflexões a partir do mesmo. Pode se observar os processos do KDD com 
+mais clareza na figura 4 .
+Figura 4 – Etapas do processo KDD
+de kdd.jpg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fonte – (FAYYAD; PIATETSKY-SHAPIRO; SMYTH, 1996)
+
+
+O processo inicia-se com a obtenção dos dados. Depois etapa de seleção, é onde serão decididos 
+quais os conjuntos de dados que serão relevantes para que sejam obtidos resultados  com  
+informações  uteis.  Na  etapa  de  processamento  acontece  à  limpeza  dos dados e seleção de 
+atributos. Nesta etapa informações ausentes errôneas ou inconsistentes nas bases de dados devem ser 
+corrigidas de forma a não comprometer a qualidade dos modelos  de  conhecimento  a  serem  
+extraídos  ao  final  do  processo  de  KDD.  A  etapa  de transformação dos dados analisa os dados 
+obtidos da etapa anterior e os reorganiza de uma forma especifica para que possam ser interpretados 
+na etapa seguinte. Na etapa de mineração dos dados é onde tudo acontece, os dados depois de 
+transformados serão lidos e interpretados. A mineração faz com que meros dados sejam transformados 
+em informações, tais informações são indicadas através de força bruta, ou seja, lendo regra por 
+regra e as interpretando. Na última etapa a de interpretação de resultados é onde as regras 
+indicadas pelo processo anterior serão interpretadas e avaliadas.
+
+
+
+20
+
+2.5   Distância Euclidiana
+A distância euclidiana é uma medida de Dissimilaridade, é um conceito matemático que representa a 
+menor distância existente entre dois pontos na Geometria Euclidiana. Esta geometria foi construída 
+pelo matemático grego Euclides. Segundo (REGAZZI, 2002), “embora a distância euclidiana seja uma 
+medida de dissimilaridade, às vezes ela é referida como uma medida de semelhança, pois quanto maior 
+seu valor, menos parecidos são os indivíduos ou unidades amostrais”, quanto menor o valor observado 
+mais parecido serão os objetos ou nesse caso os pontos da série temporal. A Distância Euclidiana só 
+pode ser medida em séries do mesmo tamanho, consistindo no cálculo da distância entre os pares de 
+pontos das duas sequencias.
+O calculo tem complexidade O(n), mas pode ser acelerado. Quando ela é utilizada como  sub-rotina  
+em  algoritmos  de  mineração  como  o  de  classificação,  por  exemplo,  o interesse pode estar 
+em conhecer a verdadeira distância entre séries.
+De acordo com (MANLY; ALBERTO, 2016), “a distância euclidiana, quando for estimada a partir das 
+variáveis originais, apresenta a inconveniência de ser influenciada pela escala, de medida pelo 
+número de variáveis e pela correlação existente entre as mesmas”. Para contornar as escalas, faz-se 
+a padronização das variáveis em estudo, para que possuam a variância igual à unidade.
+Distância entre duas instâncias Pi e Pj definida como:
+Figura 5 – Distância Euclidiana
+
+
+
+n
+D = ,
+(Pik − Pjk )2
+(2.1)
+
+
+Fonte – (MANLY; ALBERTO, 2016)
+
+
+
+
+mente.
+Pik e Pjk para K = 1..., n. São os n que descrevem as instâncias pi e pj, respectiva-
+
+A distância euclidiana é, sem dúvida, a medida de distância mais utilizada para
+a análise de agrupamentos e para análise de séries temporal. Considerando o caso mais simples, no 
+qual existem n indivíduos, onde cada um dos quais possuem valores para p variáveis, a distância 
+euclidiana entre eles é obtida mediante o teorema de Pitágoras, para um espaço multidimensional.
+Explicando a formula, é a raiz quadrada da soma dos resultados da diferença entre os pontos 
+elevados ao quadrado, pode ser observada na figura 5.
+
+21
+
+2.6   Linguagem Python, e suas bibliotecas e ferramentas
+Para  ter  mais  eficiência  na  análise  de  dados  foi  utilizada  a  linguagem  Python e  também 
+ utiliza-se  algumas  bibliotecas  destinadas  para  análise  de  dados  e  cálculos específicos.
+O   (PYTHON,  2018)  é  uma  linguagem  de  programação  criada  por  Guido  Van Rossum  em  1991,  
+é  a  linguagem  ideal  para  aplicações  científica  sendo  uma  linguagem expressiva, em que é 
+fácil traduzir o raciocínio em um algoritmo e tem sido ótimo para dados e preparação, e para 
+análise e modelagem de dados.
+A (PANDAS, 2018) é uma biblioteca open source, licenciada pelo BSD, que por sua vez é uma licença 
+de código aberto inicialmente utilizada nos sistemas operacionais do tipo Berkeley Software 
+Distribution, que fornece estruturas de dados de alto desempenho e fáceis de usar e ferramentas de 
+análise de dados para a linguagem de programação Python. A biblioteca ajuda a preencher essa 
+lacuna, permitindo que você execute todo o seu fluxo de trabalho de análise de dados em Python sem 
+precisar alternar para um idioma mais específico do domínio, como Linguagem R. Combinado com o 
+excelente kit  de ferramentas IPython e outras bibliotecas, o ambiente para análise de dados no 
+Python se destaca no desempenho, produtividade e capacidade de colaboração.
+A biblioteca (NUMPY, 2018) é descrita como o pacote básico da linguagem Python que permite 
+trabalhar com arranjos, vetores e matrizes de N dimensões, de uma forma comparável e com uma 
+sintaxe semelhante ao software proprietário Matlab, mas com muito mais eficiência, e com toda a 
+expressividade da linguagem.
+A biblioteca   (MATPLOTLIB, 2018), é uma biblioteca de plotagem 2D em Python que produz números de 
+qualidade de publicação em uma variedade de formatos impressos e ambientes interativos entre 
+plataformas. O Matplotlib pode ser usado em scripts Python, nos shells do Python e do IPython, no 
+Notebook Jupyter, nos servidores de aplicativos da Web e em quatro kits de ferramentas de interface 
+gráfica do usuário.
+E para fazer a integração da linguagem python com as bibliotecas, pode-se utilizar vários  
+compiladores,  IDE  (Integrated  Development  Environment)  que  é  o  Ambiente  de Desenvolvimento 
+Integrado, Pycharm, Visual Studio, Notepad++ e o Jupyter Notebook, onde o mesmo foi utilizado para 
+a análise dos dados e plotagem dos gráficos.
+O  (JUPYTER, 2018), a explicação que é um aplicativo da Web de código aberto que permite criar e 
+compartilhar documentos que contêm código ativo, equações, visualizações e texto narrativo. Os usos 
+incluem: limpeza e transformação de dados, simulação numérica, modelagem  estatística,  
+visualização  de  dados,  aprendizado  de  máquina  e  muito  mais. Nascido do Projeto IPython em 
+2014, à medida que evoluiu para suportar ciência de dados interativa e computação científica em 
+todas as linguagens de programação.
+
+22
+
+3  DESENVOLVIMENTO DO TRABALHO
+
+Objetivo desse capítulo é apresentar o desenvolvimento e a implantação do algoritmo para análise de 
+dados.
+
+3.1   Coleta dos Dados
+Os  dados  depois  de  coletados  e  armazenados  foram  concedidos  uma  pequena amostra, mais ou 
+menos oito meses de dados, no formato de xlsx (planilha Excel) como pode ser observada na figura 6. 
+Os dados têm as informações de data hora da coleta a quantidade de litros consumidos por hora, e o 
+total de litros acumulados. Com os dados em mãos foi inserido no jupyter notebook, para realizar 
+alguns experimentos, de data mining com linguagem python  e suas bibliotecas.
+Figura 6 – Arquivo de Dados formato Excel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.2   Desenvolvimento do algoritmo
+Como  pode  ser  visualizado  na  figura  7,  o  primeiro  passo  que  deve  ser  feito  é  a 
+importação das devidas bibliotecas para a análise dos dados. E é acrescentado um algoritmo na 
+última linha o "%matplotlib inline"  este por sua vez serve auxiliar a visualização na
+
+23
+
+Figura 7 – Importando as Bibliotecas
+
+
+
+
+
+
+
+
+
+
+
+apresentação  dos  gráficos  no  jupyter  notebook  sem  a  necessidade  de  utilizar  a  função 
+especifica sendo está a “plt.show()”.
+Figura 8 – Importação do arquivo
+
+
+
+
+
+Na figura 8, é feita a importação do arquivo com os dados, atribui-se o arquivo com os dados a uma 
+variável. Neste caso a variável denominada de "df", o nome é dado comumente a uma variável, pois é 
+a iniciais de um data frame. Por sua vez um data frame é  semelhante  a  uma  matriz,  mas  as  
+suas  colunas  tem  nomes  e  podem  conter  dados  de tipos diferentes. Um data frame pode ser 
+visto como uma tabela de uma base de dados, em  que  cada  linha  corresponde  a  uma  registro  da 
+ tabela.  Cada  coluna  corresponde  às propriedades, ou campos, a serem armazenadas para cada 
+registro da tabela. E após o nome do arquivo e tipos do arquivo foi colocado uma função, 
+"parsedates", onde verifica a se as datas estão em um formato adequado para criação do data frame.
+Figura 9 – Mostrando conteúdo do Data Frame
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ao executar este comando "df.head()"  podendo observar na figura 9, é o conteúdo do  data  frame.  
+Verificando  que  o  arquivo  contém  linhas  e  colunas,  e  que  nas  colunas compreende que 
+contém data e hora em que o dado foi extraído, outra coluna a quantidade
+24
+
+de litros de água consumidos e na outra coluna o valor acumulado de litros, a partir dá primeira 
+extração dos dados.
+Figura 10 – Separação da coluna Data e Hora
+
+
+
+
+
+
+
+
+Após verificar o conteúdo do data frame, é aplicado um algoritmo para desmembrar a coluna Data e 
+Hora e criar outras colunas, como pode se observar na figura 10. Onde cada coluna recebeu os dados 
+de acordo com as suas descrições, a coluna Data recebeu somente as datas, a coluna Hora recebeu 
+somente as horas e foi criada uma coluna denominada de Semana, onde recebeu os dias da semana 
+referenciando com a coluna Data.
+Figura 11 – Data Frame modificado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Na figura 11 trata-se do data frame que foi modificado para que as análises fossem realizadas com 
+mais exatidão possível.
+Aplicando-se a função “df.describe”  no data frame, como pode notar na figura 12, há o retorno de 
+alguns dados estatísticos, onde o count retorna a somatória de dados nesse caso total de 4033 dados 
+para ambas as colunas, no caso do mean há o retorno das medias para todo o data frame, para a 
+coluna consumo (litros) retorno de aproximadamente de 28 litros e na coluna valor acumulado o 
+retorno de aproximadamente 56183 litros, onde se pode verificar o mesmo resultado a utilizar a 
+função “df.mean()”   separadamente. No retorno do std, que seria o desvio padrão, há o retorno na 
+coluna de consumo (litros) de
+40.455 e na coluna valor acumulado 32613.94. No caso do min há o retorno de 0 litros na coluna de 
+consumo (litros) e 65 na coluna valor acumulado, e no caso do “df.max ()”  há o retorno de 550 
+litros na coluna de consumo(litros) e 113871 na coluna de valor acumulado.
+
+25
+
+Figura 12 – Funções Describe  e  mean
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 13 – Algoritmo para plotagem dos dados
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+O Algoritmo na figura 13, é utilizado para a plotagem dos dados, isso é o algoritmo serve para a 
+visualização dos dados em forma de gráficos. Houve a importação da biblioteca datetime  do  python  
+para  que  se  possa  trabalhar  com  as  datas.  A  função  “plt.figure()” é  utilizada  para  
+formatar  o  tamanho  da  figura.  Após  é  criada  uma  lista  com  algumas datas é atribuída a 
+uma variável com nome de “data”, é feito o mesmo com a variável “marque”, mas recebendo uma lista 
+com strings, e com elas serão formados os marcadores do gráfico. Com um “for”  é feito uma iteração 
+onde é passa por todos os elementos da lista “data”, e são adicionadas as datas separadas em uma 
+variável “data1” onde é feita o tratamento para que possa ser realizada a plotagem de cada data na 
+função “plt.plot()”, se sendo assim também há iteração da lista dos marcadores onde cada data será 
+plotada
+
+26
+
+no gráfico tendo um marcador diferente, podendo assim fazer a comparação de cada data. E na função 
+“plt.legend()”  é configurada a legenda do gráfico onde se podem ver os dados das datas diferente e 
+realizando a comparação. Nas funções “plt.xticks”  e “plt.yticks()” são configuradas os rótulos do 
+gráfico tanto na horizontal como na vertical, ambas com o  mesmo  tamanho  de  fonte,  mas  o  
+rotulo  da  horizontal  tem  uma  pequena  diferença  a configuração  da  rotação  dos  rótulos  
+para  45o  para  facilitar  a  visualização.  E  por  fim “plt.title()”  onde é configurado o 
+título do gráfico com a fonte tamanho 15.
+Figura 14 – Função para calculo das médias diárias
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Com esta função que está na figura 14, foi obtida às médias diárias. Primeiramente foi denominada 
+uma variável “dataunicas” onde recebeu as datas dos dados, e utilizando se um for  para se fazer 
+uma iteração para o cálculo da média, e foi armazenado em uma lista em forma de tuplas. Cada tupla 
+recebeu a data e a média correspondente a aquela data. Após ter a lista completa foi criada uma 
+variável, denominada “df2”, onde recebeu um  novo  dataframe,  e  com  o  comando  “columns”  
+nomeiando  se  as  colunas  desse  novo dataframe, onde foi exibido na figura 14 logo abaixo do 
+algoritmo.
+
+3.3   Aplicando a formula da Distância Euclidiana em Python
+Como  é  visto  nas  figuras  15  e  na  figura  16,aplicações  de  funções  da  Distância 
+Euclidiana em Python, sendo que na figura 16 foi aplicada a formula da Distância Euclidiana com  
+auxilio  da  biblioteca  Numpy,  notando  se  que  as  variáveis  v1  e  v2  são  vetores  que 
+recebem listas com uma amostragem de dados, nesse caso uma série de números variados, após isso é 
+feito a diferença nas variáveis que na verdade são matrizes, e depois é realizada
+
+27
+
+Figura 15 – Exemplo de Distância Euclidiana em Python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 16 – Exemplo de Distância Euclidiana em Python com biblioteca Numpy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a multiplicação entre as matrizes e depois é retornada a raiz quadrada das matrizes, e é verificado 
+o cálculo obtendo o resultado que tende a ser o mais próximo de zero, para poder demostrar um 
+agrupamento de padrões nos dados.
+
+
+
+
+
+
+
+
+
+
+
+
+28
+
+4  RESULTADOS
+
+Neste capítulo serão apresentados os resultados e análises obtidos nos estudos dos dados. E para 
+verificação dos algoritmos e dos dados o arquivo encontra-se no site Github no link: 
+https://github.com/nata27junior/Dataframe-Tg-dados.
+
+4.1   Resultados obtidos com Distância Euclidiana
+Com as funções descritas nas figuras 15 e 16, e aplicando-as nos dados foram obtidos os seguintes 
+resultados:
+Figura 17 – Aplicação Distância Euclidiana nos meses de Março e Abril de 2018
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Com as funções de Distância Euclidiana, aplicadas nos dados relativos há dois meses, março de 2018 
+e abril de 2018, foi obtido o seguinte resultado de ≈ 1417, observa-se isso na figura 17. 
+Relembrando que distância euclidiana é uma das medidas de dissimilaridade entre comunidades mais 
+utilizadas na prática. E quanto menor o valor da distância euclidiana
+
+29
+
+entre os dados, mais próximos os pontos se apresentam, logo, quanto menor a distância entre os 
+pontos, maior a eficiência do procedimento.
+Figura 18 – Gráfico  de  comparação  dos  meses  de  março  e  abril  de  2018  com  a Distância 
+Euclidiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nesse gráfico, da figura 18, foi aplicada a função da Distância Euclidiana no consumo diário nos 
+meses de março e abril de 2018, aplicada ponto a ponto, e notando se que em alguns dias o consumo 
+diário dos meses foi quase semelhante onde os resultados da função da Distância Euclidiana quase se 
+aproxima a zero.
+Executando  as  funções  de  Distância  Euclidiana  entre  duas  semanas,  de  17  de setembro a 23 
+de setembro e 24 de setembro a 30 de setembro, obteve-se o resultado de ≈ 620. Mas uma vez, o 
+resultado obtido não foi mais próximo de zero, como se observa na figura 19.
+No gráfico da figura 20 representa o consumo entre duas semanas de 17 de setembro a 23 de setembro 
+e 24 de setembro a 30 de setembro, com a distância euclidiana aplicada ponto a ponto, mesmo com o 
+gráfico com os dados muito próximo pode verificar que há pontos onde o resultado da função 
+aproximou de zero . E pode conferir com mais detalhes no gráfico da figura 21, onde foi aplicada a 
+função no consumo diário, observando que o consumo nos dias foram bem semelhante e o resultado da 
+função foi bem próximo de zero.
+Executando as funções de Distância Euclidiana em dois dias, 09 e 16, do mês de setembro, dois 
+sábados do mesmo mês, e obteve-se o resultado de ≈203. Mas uma vez, o resultado obtido não sendo 
+mais próximo de zero (0), como se observa na figura 22.
+O Gráfico da figura 23 representa o consumo entre dois dias, 09 de setembro e 16 de setembro, dois 
+sábados do mesmo mês, aplicada a função da Distância ponto a ponto,
+30
+
+Figura 19 – Aplicação da Distancia Euclidiana entre duas semanas setembro de 2017
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+observa que no período onde não houve consumo os resultados foram próximos a zero, e em alguns 
+pontos onde teve consumo o resultado da função também se aproximou de zero sendo um comportamento 
+do consumo muito parecido.
+
+4.2   Resultados obtidos com a Função para plotagem de gráfico
+Com a função de plotagem de gráfico que foi discriminar na figura 13, podemos verificar as 
+seguintes situações.
+No gráfico da figura 24, é possível comparar os dados das seguintes datas, 27/08/2017, 03/09/2017, 
+10/09/2017, 17/09/2017, que são Domingos, primeiramente é observado que há um consumo semelhante 
+entre os dias. Mas nos períodos da madrugada há um baixo consumo de água onde pode verificar que 
+não há vazamentos. E onde ocorrem os picos de consumo que observando mas a fundo pode se afirmar 
+que não é um vazamentos, pois se fosse vazamento o consumo seria mais constante.
+No gráfico da figura 25, foi aplicada a função de plotagem com os dados das datas, 28/08/2017, 
+04/09/2017, 11/09/2017, 18/09/2017, que são segundas-feiras, obteve essa
+
+31
+
+Figura 20 – Gráfico  de  comparação  entre  duas  semanas  com  a  Distância  Eucli- diana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 21 – Gráfico  de  comparação  entre  duas  semanas  com  a  Distância  Eucli- dianas 
+Detalhadas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+comparação dos dados, e que há um consumo semelhante.Mas nos períodos da madrugada há um baixo 
+consumo de água onde pode verificar que não há vazamentos. E onde ocorrem os picos de consumo que 
+observando mas a fundo pode se afirmar que não é um vazamentos, pois se fosse vazamento o consumo 
+seria mais constante.
+No  gráfico  da  figura  26,  foi  aplicada  a  função  de  plotagem  com  os  dados  das datas, 
+22/08/2017, 29/08/2017, 05/09/2017, 12/09/2017, que são terças-feiras, obteve essa
+32
+
+Figura 22 – Aplicação da Distancia Euclidiana entre os dias 09 e 16 de setembro de 2017
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+comparação dos dados, e que há um consumo semelhante. Mas nos períodos da madrugada há um baixo 
+consumo de água onde pode verificar que não há vazamentos. E onde ocorrem os picos de consumo que 
+observando mas a fundo pode se afirmar que não é um vazamentos, pois se fosse vazamento o consumo 
+seria mais constante.
+No gráfico da figura 27, foi aplicada a função de plotagem com os dados das datas, 23/08/2017,  
+30/08/2017,  06/09/2017,  13/09/2017,  que  são  quartas-feiras,  obteve  essa comparação dos 
+dados, nota-se e que há um consumo semelhante. Mas nos períodos da madrugada há um baixo consumo de 
+água onde se pode notar que não há vazamentos. E onde ocorrem os picos de consumo que observando, 
+mas a fundo pode se afirmar que nesses picos não é um vazamentos, pois se fosse vazamento o consumo 
+seria mais constante.
+No gráfico da figura 28, foi aplicada a função de plotagem com os dados das datas, 31/08/2017,  
+07/09/2017,  14/09/2017,  21/09/2017,  que  são  quintas-feiras,  obteve  essa comparação  dos  
+dados,  nota-se  que  há  um  consumo  semelhante.  Mas  nos  períodos  da madrugada há um baixo 
+consumo de água onde se pode notar que não há vazamentos. E onde ocorrem os picos de consumo que 
+observando, mas a fundo pode se afirmar que nesses picos não é um vazamentos, pois se fosse 
+vazamento o consumo seria mais constante.
+No gráfico da figura 29, foi aplicada a função de plotagem com os dados das datas de 31/08, 07/09, 
+14/09 e 21/09/2017, que são sextas-feiras, obteve essa comparação dos dados, nota-se e que há um 
+consumo semelhante. Mas nos períodos da madrugada há um
+
+33
+
+Figura 23 – Gráfico  de  comparação  entre  os  dias  09  e  16  de  setembro  de  2017 com 
+Distância Euclidiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 24 – Gráfico de comparação entre Domingos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+baixo consumo de água onde se pode notar que não há vazamentos. E onde ocorrem os picos de consumo 
+que observando, mas a fundo pode se afirmar que nesses picos não é um vazamentos, pois se fosse 
+vazamento o consumo seria mais constante.
+No gráfico da figura 30, foi aplicada a função de plotagem com os dados das datas de 26/08, 02/09, 
+09/09 e 16/09/2017, que são sábados, obteve essa comparação dos dados, nota-se e que há um consumo 
+semelhante. Mas nos períodos da madrugada há um baixo
+
+34
+
+Figura 25 – Gráfico de comparação entre Segundas-Feiras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 26 – Gráfico de comparação entre Terças-Feiras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+consumo de água onde se pode notar que não há vazamentos. E onde ocorrem os picos de  consumo  que  
+observando,  mas  a  fundo  pode  se  afirmar  que  nesses  picos  não  é  um vazamentos, pois se 
+fosse vazamento o consumo seria mais constante.
+Com o gráfico da figura 31, trata-se da aplicação da função de plotagem fazendo uma comparação dos 
+dados entre duas semanas. Uma semana é de 03 de setembro a 09 de setembro e outra semana é de 10 de 
+setembro a 16 de setembro, e uma linha do gráfico se trata de diferença de consumo hora a hora 
+entre essas duas semanas. Com os pontos
+
+35
+
+Figura 27 – Gráfico de Comparação dos dados entre Quartas-feiras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 28 – Gráfico de Comparação dos dados entre Quintas-feiras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+muito próximos fica complicada a visualização dos pontos, mas há períodos onde não há consumo 
+podendo afirmar que não houve vazamentos.
+Com o gráfico da figura 32 trata-se da aplicação da função de plotagem nos dados fazendo uma 
+comparação entre dois dias, com uma linha mostrando a diferença ponto a ponto, os dados utilizados 
+para esse gráfico foi os dados dos dias 09 e 16 de setembro de 2017 e trata-se das últimas 24 horas 
+podendo ver com mais detalhes as linhas que dos dias e a diferença dos dados. Nos horários da 
+madrugada pode-se verificar que não há consumo
+
+36
+
+Figura 29 – Gráfico de Comparação dos dados entre Sextas-feiras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 30 – Gráfico de Comparação dos dados entre Sábados
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+de água.
+Na  figura  33,  utiliza-se  uma  função  especifica  para  mostrar  os  dias  com  maior consumo 
+de água. Esses dias o consumo ultrapassa os 300 litro de água. Na figura 34 uma plotagem que mostra 
+os dias com maior consumo de água. Nota-se que no dia 15/05/2018 não tem os dados de consumo de 
+todas as horas. O registro dos dados é a partir das 19hs, não foi passada a informação se houve 
+falha no equipamento para obtenção dos dados, ocasionando essa amostra com índice muito elevado de 
+consumo. No dia 16/05/2018 há o
+
+37
+
+Figura 31 – Gráfico de comparação com diferença entre 03 a 09/09 e 10 a 16/09
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 32 – Gráfico detalha a comparação com diferença entre a 09/09 e 16/09
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+registro de consumo após as 00hs, não se sabe se foi decorrente ao dia anterior que teve falha nos 
+dados ou se realmente foi um consumo excessivo, mas como já observado nas horas da madrugada não há 
+consumo de água, passa-se a ideia que no sistema não houve vazamento. O mesmo ocorre no dia 
+16/01/2018 também se obteve um registro de dados elevado acima de 550 litros, como se pode notar a 
+obtenção dos dados foi a partir das 11hs, então não se sabe se foi falha no sistema ou realmente 
+teve um consumo elevado.
+Com a função detalhada na figura 14 onde foi possível realizar o cálculo das médias
+
+38
+
+Figura 33 – Figuras mostrando os dias com maior consumo de água
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+diárias do arquivo todo. E com a plotagem dos dados obtidos no gráfico da figura 35 e também no 
+gráfico da figura 36 sendo que este é uma plotagem dos dados mais detalhados para  verificação  das 
+ datas,  e  observa  que  na  maioria  dos  dias  o  consumo  médio  não ultrapassa 50 litros.
+Com o gráfico da figura 37 pode se verificar a comparação das médias diárias entre os meses de 
+setembro e outubro e junto foi realizado o cálculo com a Distância Euclidiana ponto  a  ponto,  e  
+em  alguns  pontos  os  resultados  se  aproxima  de  zero  e  observando  a semelhança entre os 
+dados.
+Utilizando  a  mesma  função  detalhada  na  figura  14,  mas  apenas  substituindo  a função “mean 
+()”  pela função “sum ()”, foi possível realizar o cálculo do total diário de todo o arquivo. E com 
+a plotagem dos dados obtidos na figura 38 e na figura 39, sendo esta uma plotagem dos dados mais 
+detalhados para verificação, e se observa que na maioria dos dias o consumo ultrapassa 800 litros. 
+Como já mencionado, foi constatado que nesse período dos dados não houve vazamentos, mas não pode 
+se afirmar com certeza se houve excesso no consumo, pois teria que se fazer um estudo aprofundado 
+obtendo o número de consumidores desse local onde foram obtidos os dados.
+Com a figura 40 pode se verificar a comparação do total diário entre os meses de
+
+39
+
+Figura 34 – Plotagem dos dados dos dias de maior consumo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 35 – Gráfico com médias diárias de toda amostragem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+setembro e outubro e junto realizado o cálculo com a Distância Euclidiana ponto a ponto e em alguns 
+pontos os resultados se aproxima de zero e observando a semelhança entre os dados.
+O gráfico da figura 41 é uma simulação de vazamento. Onde os dados desse mesmo mês foi acrescentada 
+uma constante no valor 50 litros hora e aplicado o resultado desses dados no algoritmo de plotagem 
+da figura 13. Verifica-se que continua tendo o consumo normal,  mas  há  um  aumento  expressivo  
+por  causa  do  vazamento.  E  no  final  após  o vazamento ter sanado retorna-se ao consumo 
+normal. E observando consumo do local onde foram extraídos os dados, o algoritmo apontou neste caso 
+que houve um vazamento, e também apontou-nos outros casos momentos que não houve consumo e momentos 
+onde o consumo se teve picos podendo ser ou não excesso no consumo.
+
+40
+
+Figura 36 – Gráfico detalhado com médias diárias
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 37 – Gráfico com médias diárias dos meses setembro e outubro com Dis- tância Euclidiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E com a figura 42 nota-se que o total de litros acumulados na simulação foi de 7592 litros, em 
+comparação com o total consumido normalmente de 3492 litros, e a diferença entre a simulação e 
+consumo normal é de 4100 litros.
+A figura 43 apresenta a mesma figura 41 com uma diferença o cálculo da Distância Euclidiana ponto a 
+ponto, pode se notar que com o cálculo houve uma ascensão dos pontos no gráfico indicando um 
+aumento no consumo. E voltando ao estado normal assim que o
+
+41
+
+Figura 38 – Gráfico do Total Diário de toda amostragem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 39 – Gráfico detalhado da Total Diário
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+problema foi sanado.
+Com base na função de cálculo de média, da figura 14, foi realizada uma plotagem dos dados em 
+gráficos com a média hora a hora total do arquivo. Como pode ser observado na figura 44, com isso 
+pode se ter uma base para estipular excesso no consumo de água.
+Com o gráfico da figura 45, é a plotagem dos dados da comparação entre os meses de Fevereiro e 
+Março de 2018 mais a média de todo o arquivo de dados, pode se observar há períodos semelhantes no 
+consumo de água.
+Com o gráfico da figura 46, é a plotagem dos dados da comparação entre os meses de Fevereiro, Março 
+e Abril de 2018 mais a média de todo o arquivo de dados, pode se observar há períodos semelhantes 
+no consumo de água.
+
+42
+
+
+
+
+Figura 40 – Gráfico do Total Diário entre dois meses com Distância Euclidiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 41 – Gráfico Simulação de vazamento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+43
+
+
+
+
+
+
+Figura 42 – Simulação de vazamento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 43 – Gráfico com a simulação de vazamento com distância euclidiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+44
+
+
+Figura 44 – Gráfico da média hora a hora do arquivo todo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 45 – Gráfico  da  média  hora  a  hora  entre  Fevereiro  e  Março  e  a  média do arquivo 
+todo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figura 46 – Gráfico  da  média  hora  a  hora  entre  Fevereiro,  Março  e  Abril  e  a média do 
+arquivo todo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46
+
+5  Conclusão
+
+Este trabalho foi desenvolvido para atender as necessidades da empresa TecSUS, utilizando  os  
+dados  da  empresa  para  realizar  um  estudo  no  consumo  de  água  para  in- vestigação de 
+detecção possível excesso e vazamento em residências e empresas, visando economia no consumo de 
+água. Utilizando algumas técnicas de Data Mining para plotagem de gráficos, e aplicando a fórmula 
+da Distância Euclidiana.
+Tendo em vista os experimentos aplicados nos dados e os resultados dos gráficos de comparação nos 
+dias da semana, afirma-se que em alguns períodos não há consumo de água, sendo assim nesses 
+períodos não houve vazamentos.
+Reforçando que na média geral de todo o arquivo o consumo ficou menor que 30 litros, e nas médias 
+diárias pode se observar que o consumo fica abaixo de 50 litros. E que no acumulado diário o 
+consumo ultrapassa os 800 litros.
+E aplicando o algoritmo de plotagem nos dados de simulação de vazamento figura 41, obtém um gráfico 
+de simulação de um vazamento, notando que houve um aumento expressivo no consumo de água e 
+retornando ao estado de normalidade quando o problema estiver sanado. E observando na figura 42 
+onde é feita a soma do total dos litros consumidos e  dos  litros  da  simulação  do  vazamento,  e 
+ veja  a  diferença  entre  os  dois  resultados,  é verificado que tem um desperdício e assim 
+ocasionando um aumento relativo na conta. E na figura 43 onde é aplicada a Distância Euclidiana 
+observa se que houve um deslocamento na linha apontando o aumento no consumo de água ocasionado 
+pelo vazamento, e retornando a normalidade depois que o problema foi sanado.
+E ao utilizar a fórmula matemática da Distância Euclidiana, que é muito utilizada para  análise  de 
+ séries  temporal,  o  resultado  tende  ser  o  mais  próximo  de  zero.  E  que quanto maior o 
+valor observado menos semelhante será a séries temporal. E que foi possível observar os resultados 
+no decorrer desses dados, que há períodos semelhantes no consumo.
+E para realizar previsões para advertir o consumidor caso tivesse um excesso no consumo é 
+necessário uma análise mais profunda, com mais período de dados.
+
+5.1   Trabalhos Futuros
+Este  trabalho  expande  a  possibilidade  de  melhorias  e  oportunidade  para  novas 
+implementações das técnicas. Sendo eles:
+1.  Estudar mais a fundo os dados de consumo para poder obter mais detalhes para que se possa obter 
+talvez uma previsão nos dados.
+47
+
+2.  Aplicar  as  técnicas  de  data  mining  para  outro  serviço  da  empresa  TecSUS  como sendo 
+o TecLux;
+3.  Aplicar  as  técnicas  de  data  mining  para  outro  serviço  da  empresa  TecSUS  como sendo 
+o TecGas;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+48
+
+Referências
+
+ANA. Boletins de Monitoramento dos Reservatórios do Sistema Hidráulico do Rio Paraíba do Sul. 2018. 
+Disponível em: <http://www3.ana.gov.br/portal/ANA/sala-de-situacao/ paraiba-do-sul>. Acesso em: 10 
+set. 2018.   Citado 2 vezes nas páginas 15 e 16.
+BINAPRATICA.  Dados  VS  Informação:  Qual  a  diferença?  2017.  Disponível  em:
+<https://www.binapratica.com.br/dados-x-informacao>.  Acesso  em:  10  nov.  2017. Citado na página 
+18.
+DIG, Think Before You. Privacy implications of data mining & aggregation. NASCIO Research Brief, 
+2004.   Citado na página 19.
+FAYYAD, Usama; PIATETSKY-SHAPIRO, Gregory; SMYTH, Padhraic. From data mining to knowledge discovery 
+in databases. AI magazine, v. 17, n. 3, p. 37, 1996.   Citado 2 vezes nas páginas 19 e 20.
+JUPYTER.  Jupyter  Project  and  Community.  2018.  Disponível  em:  <https:
+//jupyter.org/about>. Acesso em: 10 set. 2018.   Citado na página 22.
+MANLY, Bryan FJ; ALBERTO, Jorge A Navarro. Multivariate statistical methods: a primer. [S.l.]: 
+Chapman and Hall/CRC, 2016.   Citado na página 21.
+MATPLOTLIB. https://numfocus.org/. 2018. Disponível em: <https://matplotlib.org/>. Acesso em: 10 
+set. 2018.   Citado na página 22.
+NUMPY. Pyscience-brasil. 2018. Disponível em: <http://pyscience-brasil.wikidot.com/ module:numpy>. 
+Acesso em: 10 set. 2018.   Citado na página 22.
+PANDAS. Python Data Analysis Library. 2018. Disponível em: <https://pandas.pydata. org/>. Acesso 
+em: 10 set. 2018.   Citado na página 22.
+PYTHON. Python Software Foundation. 2018. Disponível em: <https://www.python.org/ about/>. Acesso 
+em: 10 set. 2018.   Citado na página 22.
+REGAZZI, AJ. Análise multivariada. Viçosa, MG: Universidade Federal de Viçosa, v. 2, 2002.   Citado 
+na página 21.
+
+
+
+
+
+
+
+
+
+
+49
